@@ -29,7 +29,7 @@ $('#chat').submit(function(event) {
             message: message
         };
         renderizarMensagem(messageObject)
-        socket.emit('sendMessage', messageObject);
+        socket.emit('enviarMensagem', messageObject);
     }
 
 })
