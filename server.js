@@ -17,13 +17,15 @@ app.use('/', (req, res) =>{
 });
 
 io.on('connection', socket =>{
+
+    /* O id do usuário logodo */
 console.log(`Socket Conectado: ${socket.id}`)
 
     /*Garantindo que quando houver um reload na pagina não perder as mensagem enviadas, então ele envia todas mensagens para o array chamado messages*/
     socket.emit('armazendoMensagens', messages)
 
 
-    socket.on('sendMessage', data => {
+    socket.on('enviarMensagem', data => {
         messages.push(data);
         socket.broadcast.emit('recebendoMenssagem', data);
     });
